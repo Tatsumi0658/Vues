@@ -5,7 +5,8 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
+    meta: { title: 'HOMEダヨ' }
   },
   {
     path: '/about',
@@ -13,7 +14,8 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
+    meta: { title: 'ABOUTだよ' }
   },
   {
     path: '/pages/:id',
@@ -31,12 +33,30 @@ const routes = [
         component: () => import('../views/PagesAbout.vue')
       }
     ]
+  },
+  {
+    path: '/a',
+    /* redirect: { name: 'About' } */
+    redirect: { path: '/about' }
   }
 ]
+
+/* const scrollBehavior = (to, from, savedPosition) => {
+  if(savedPosition){
+    return savedPosition
+  }else{
+    return { x:0, y:0 }
+  }
+} */
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
+})
+
+/* 下記でタイトル設定 */
+router.afterEach((to)=>{
+  document.title = to.meta.title || ''
 })
 
 export default router
