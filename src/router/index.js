@@ -24,15 +24,13 @@ const routes = [
         path: 'profile',
         name: 'PagesProfile',
         component: () => import('../views/Profile.vue'),
+      },
+      {
+        path: 'about',
+        name: 'PagesAbout',
+        component: () => import('../views/PagesAbout.vue')
       }
     ]
-      /*{
-        path: '/pages/:about',
-        name: 'PageAbout',
-        component: () => import('../views/Pages/_about.vue')
-      }
-    ]*/
-    /* component: Page */
   }
 ]
 
