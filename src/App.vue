@@ -3,8 +3,22 @@
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link>
   </div>
+  <div id="app">
+      {{ this.$store.state.count }}
+  </div>
   <router-view/>
 </template>
+
+<script>
+  export default {
+    name: 'App',
+    /*computed: {
+      count() {
+        return this.$store.state.count
+      }
+    }*/
+  }
+</script>
 
 <style>
 #app {
