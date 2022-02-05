@@ -1,8 +1,8 @@
 import { createApp } from 'vue'
 /* import Vue from 'vue' */
 import App from './App.vue'
-/*import router from './router'
-import axios from 'axios'
+import router from './router'
+/*import axios from 'axios'
 import vuex from 'vuex'*/
 import { store } from './store'
 /*import store from './store'*/
@@ -18,6 +18,8 @@ Vue.use(VueAxios, axios) */
   render: h=>h(App)
 }).mount('#app')
 */
+const app = createApp(App)
 
-
-createApp(App).use(store).mount('#app')
+app.use(store)
+app.use(router)
+app.mount('#app')
