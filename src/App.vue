@@ -4,13 +4,13 @@
     <router-link to="/about">About</router-link>
   </div>
   <div id="app">
-      {{ this.$store.state.count }}
-      <button @click="increment">追加</button>
-      {{ storecount }}
-      <br>
-      <button @click="changeMess">変更</button>
-      {{ this.$store.state.message }}
-      {{ changeMessage }}
+    {{ this.$store.state.count }}
+    <button @click="increment">追加</button>
+    {{ storecount }}
+    <br>
+    <button @click="changeMess">変更</button>
+    {{ this.$store.state.message }}
+    {{ changeMessage }}
   </div>
   <router-view/>
 </template>
