@@ -6,6 +6,7 @@
   <div id="app">
       {{ this.$store.state.count }}
       <button @click="increment">追加</button>
+      {{ storecount }}
   </div>
   <router-view/>
 </template>
@@ -16,6 +17,11 @@
     methods: {
       increment(){
         this.$store.dispatch('incrementAction')
+      }
+    },
+    computed: {
+      storecount() {
+        return this.$store.getters.storecount
       }
     }
     /*computed: {
