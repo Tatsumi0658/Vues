@@ -8,5 +8,10 @@ export const store = createStore({
     increment(state){
       state.count++
     }
+  },
+  actions: {
+    incrementAction(ctx){
+      ctx.commit('increment')
+    }
   }
 })

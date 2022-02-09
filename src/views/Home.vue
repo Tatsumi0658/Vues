@@ -65,6 +65,9 @@ ul {
   padding: 8px;
   & .card-body__text {
     font-size: 18px;
+    &--red{
+      color: red;
+    }
   }
   & .card-body__link {
     border: 1px solid blue;
@@ -72,11 +75,6 @@ ul {
     padding: 8px;
     background-color: blue;
     color: #fff;
-  }
-}
-.card-body__text {
-  &--red {
-    color: red;
   }
 }
 </style>
