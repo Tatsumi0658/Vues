@@ -18,12 +18,15 @@
     <textarea ref="input" />
     <button @click="updateKeyword">アップデート</button>
     {{ getKeyword }}
+
+    <Name />
   </div>
 </template>
 <script>
   import Count from '@/components/Count.vue'
   import List from '@/components/List.vue'
   import Form from '@/components/Form.vue'
+  import Name from '@/components/Name.vue'
 
   export default {
     name: 'About',
@@ -67,7 +70,8 @@
     components: {
       Count,
       List,
-      Form
+      Form,
+      Name
     }
   }
 </script>
