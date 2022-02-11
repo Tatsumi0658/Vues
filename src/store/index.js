@@ -10,7 +10,8 @@ export const store = createStore({
         id: 1,
         name: 'aaa'
       }
-    ]
+    ],
+    keyword: 'keyword'
   },
   getters: {
     storecount(state){
@@ -21,6 +22,9 @@ export const store = createStore({
     },
     storeTodos(state){
       return state.todos
+    },
+    storeKeyword(state){
+      return state.keyword
     }
   },
   mutations: {
@@ -30,8 +34,11 @@ export const store = createStore({
     changeMessage(state){
       state.message = 'changed'
     },
-    addTodos(state){
-      state.todos.push({id: state.todos.length + 1, name: 'bbb'})
+    addTodos(state, payload){
+      state.todos.push({id: state.todos.length + 1, name: payload})
+    },
+    changeKeyword(state, payload){
+      state.keyword = payload
     }
   },
   actions: {
@@ -41,8 +48,11 @@ export const store = createStore({
     changeMessageAction(ctx){
       ctx.commit('changeMessage')
     },
-    addTodosAction(ctx){
-      ctx.commit('addTodos')
+    addTodosAction({commit}, payload){
+      commit('addTodos', payload)
+    },
+    changeKeywordAction({commit}, payload){
+      commit('changeKeyword', payload)
     }
   }
 })

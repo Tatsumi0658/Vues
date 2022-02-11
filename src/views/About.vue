@@ -11,10 +11,13 @@
     <div v-for="item in this.$store.getters.storeTodos" :key="item.id">
       {{ item.name }}
     </div>
-    <input type="text" />
+    <input type="text" v-model="name" />
     <button @click="addTodos">追加</button>
     <br />
     {{ changeTodos }}
+    <textarea ref="input" />
+    <button @click="updateKeyword">アップデート</button>
+    {{ getKeyword }}
   </div>
 </template>
 <script>
@@ -26,6 +29,7 @@
     name: 'About',
     data() {
       return {
+        name: '',
         todos: [{id:1, title: 'title', done: false}]
       }
     },
@@ -41,7 +45,12 @@
         this.$store.dispatch('changeMessageAction')
       },
       addTodos(){
-        this.$store.dispatch('addTodosAction')
+        const name = this.name
+        this.$store.dispatch('addTodosAction', name)
+      },
+      updateKeyword(){
+        const keyword = this.$refs.input.value;
+        this.$store.dispatch('changeKeywordAction', keyword)
       }
     },
     computed: {
@@ -50,6 +59,9 @@
       },
       changeTodos(){
         return this.$store.getters.storeTodos
+      },
+      getKeyword(){
+        return this.$store.getters.storeKeyword
       }
     },
     components: {
