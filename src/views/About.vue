@@ -8,6 +8,13 @@
     <br />
     <button @click="changeMess">文言変更</button>
     {{ changeMessage }}
+    <div v-for="item in this.$store.getters.storeTodos" :key="item.id">
+      {{ item.name }}
+    </div>
+    <input type="text" />
+    <button @click="addTodos">追加</button>
+    <br />
+    {{ changeTodos }}
   </div>
 </template>
 <script>
@@ -32,11 +39,17 @@
       },
       changeMess(){
         this.$store.dispatch('changeMessageAction')
+      },
+      addTodos(){
+        this.$store.dispatch('addTodosAction')
       }
     },
     computed: {
       changeMessage(){
         return this.$store.getters.storeMessage
+      },
+      changeTodos(){
+        return this.$store.getters.storeTodos
       }
     },
     components: {

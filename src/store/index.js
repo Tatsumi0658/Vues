@@ -4,7 +4,13 @@ import { createStore } from 'vuex'
 export const store = createStore({
   state: {
     count: 0,
-    message: 'hello'
+    message: 'hello',
+    todos: [
+      {
+        id: 1,
+        name: 'aaa'
+      }
+    ]
   },
   getters: {
     storecount(state){
@@ -12,6 +18,9 @@ export const store = createStore({
     },
     storeMessage(state){
       return state.message
+    },
+    storeTodos(state){
+      return state.todos
     }
   },
   mutations: {
@@ -20,6 +29,9 @@ export const store = createStore({
     },
     changeMessage(state){
       state.message = 'changed'
+    },
+    addTodos(state){
+      state.todos.push({id: state.todos.length + 1, name: 'bbb'})
     }
   },
   actions: {
@@ -28,6 +40,9 @@ export const store = createStore({
     },
     changeMessageAction(ctx){
       ctx.commit('changeMessage')
+    },
+    addTodosAction(ctx){
+      ctx.commit('addTodos')
     }
   }
 })
