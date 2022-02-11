@@ -14,7 +14,7 @@
       const readersNumber = ref(0)
       const book = reactive({title: 'vue 3'})
 
-      const name = ref('John')
+      const name = ref('volt')
 
       //methods
       const doIt = () => console.log(`Hello ${name.value}`)
