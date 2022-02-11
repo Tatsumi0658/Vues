@@ -5,6 +5,9 @@
     <Form @add="add" />
     <List :allTodos="todos" />
     <router-link :to="{ name: 'Pages', params: {id:1} }">詳細ページ</router-link>
+    <br />
+    <button @click="changeMess">文言変更</button>
+    {{ changeMessage }}
   </div>
 </template>
 <script>
@@ -26,6 +29,14 @@
       },
       done(index){
         this.todos[index].done = true
+      },
+      changeMess(){
+        this.$store.dispatch('changeMessageAction')
+      }
+    },
+    computed: {
+      changeMessage(){
+        return this.$store.getters.storeMessage
       }
     },
     components: {
