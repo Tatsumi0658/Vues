@@ -25,8 +25,13 @@
       return {
         readersNumber,
         book,
-        name
+        name,
+        ...actionConsole(book.title)
       }
-    }
+    },
   })
+
+  function actionConsole(x){
+    console.log(`Hello ${x}`)
+  }
 </script>
