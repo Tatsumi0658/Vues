@@ -1,5 +1,5 @@
 import { createStore } from 'vuex'
-
+import axios from 'axios'
 
 export const store = createStore({
   state: {
@@ -11,7 +11,8 @@ export const store = createStore({
         name: 'aaa'
       }
     ],
-    keyword: 'keyword'
+    keyword: 'keyword',
+    places: '',
   },
   getters: {
     storecount(state){
@@ -25,6 +26,9 @@ export const store = createStore({
     },
     storeKeyword(state){
       return state.keyword
+    },
+    storePlaces(state){
+      return state.places
     }
   },
   mutations: {
@@ -39,6 +43,9 @@ export const store = createStore({
     },
     changeKeyword(state, payload){
       state.keyword = payload
+    },
+    setPlaces(state, places){
+      state.places = places
     }
   },
   actions: {
@@ -53,6 +60,11 @@ export const store = createStore({
     },
     changeKeywordAction({commit}, payload){
       commit('changeKeyword', payload)
+    },
+    async doSearch({commit}){
+      const dt = await axios.get('https://zipcloud.ibsnet.co.jp/api/search?zipcode=7830060')
+      const { data } = dt
+      commit('setPlaces',data.dt)
     }
   }
 })

@@ -24,14 +24,14 @@
 
       const res = reactive({data:null})
 
+      //methods
+      const doIt = () => console.log(`Hello ${name.value}`)
+
       async function getInfo(){
         const dt = await axios.get('https://zipcloud.ibsnet.co.jp/api/search?zipcode=7830060')
         console.log(dt)
         res.data = dt.data.results[0]
       }
-
-      //methods
-      const doIt = () => console.log(`Hello ${name.value}`)
 
       onMounted(()=>{
           doIt(),
@@ -51,6 +51,7 @@
   function actionConsole(x){
     console.log(`Hello ${x}`)
   }
+
 
   /* async function getInfo(){
     const res = await axios.get('https://zipcloud.ibsnet.co.jp/api/search?zipcode=7830060')
