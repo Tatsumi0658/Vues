@@ -1,5 +1,5 @@
 import { createStore } from 'vuex'
-import axios from 'axios'
+//import axios from 'axios'
 
 export const store = createStore({
   state: {
@@ -61,10 +61,12 @@ export const store = createStore({
     changeKeywordAction({commit}, payload){
       commit('changeKeyword', payload)
     },
-    async doSearch({commit}){
-      const dt = await axios.get('https://zipcloud.ibsnet.co.jp/api/search?zipcode=7830060')
+    async doSearch(){
+      /* const dt = await axios.get('https://zipcloud.ibsnet.co.jp/api/search?zipcode=7830060')
       const { data } = dt
-      commit('setPlaces',data.dt)
+      console.log(data.dt)*/
+      console.log('aaa')
+      /* commit('setPlaces',data.dt) */
     }
   }
 })

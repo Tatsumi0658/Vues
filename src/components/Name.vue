@@ -9,10 +9,14 @@
       </li>
     </ul>
   </div>
+  {{ this.$store.state.count }}
+  {{ this.$store.state.keyword }}
+  {{ keyword }}
 </template>
 <script>
-  import {defineComponent, ref, reactive, onMounted} from 'vue'
+  import {defineComponent, ref, reactive, onMounted, computed} from 'vue'
   import axios from 'axios'
+  import {useStore} from 'vuex'
 
   export default defineComponent({
     name: 'Name',
@@ -24,8 +28,12 @@
 
       const res = reactive({data:null})
 
+      const store = useStore()
+
       //methods
       const doIt = () => console.log(`Hello ${name.value}`)
+
+      const keyword = computed(()=>store.state.keyword)
 
       async function getInfo(){
         const dt = await axios.get('https://zipcloud.ibsnet.co.jp/api/search?zipcode=7830060')
@@ -43,7 +51,8 @@
         book,
         name,
         ...actionConsole(book.title),
-        res
+        res,
+        keyword
       }
     },
   })
@@ -51,7 +60,6 @@
   function actionConsole(x){
     console.log(`Hello ${x}`)
   }
-
 
   /* async function getInfo(){
     const res = await axios.get('https://zipcloud.ibsnet.co.jp/api/search?zipcode=7830060')
